@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Question</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fff;
+            overflow: hidden; /* Prevents scrollbars when button moves */
+        }
+        #container, #celebration {
+            text-align: center;
+        }
+        img {
+            width: 250px;
+            border-radius: 10px;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        #yes-btn { background-color: #4CAF50; color: white; }
+        #no-btn { background-color: #f44336; color: white; }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueXF4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXgmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/106L6mU2VvFhT2/giphy.gif" alt="Minion">
+        <h2>Will you be my valentine?</h2>
+        <div class="buttons">
+            <button id="yes-btn">Yes</button>
+            <button id="no-btn">No</button>
+        </div>
+    </div>
+
+    <div id="celebration" style="display:none;">
+        <h1>YAYYY!!!</h1>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueXF4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXh4eXgmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/26tOZ42Mg6pbTUPHW/giphy.gif">
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        const container = document.getElementById('container');
+        const celebration = document.getElementById('celebration');
+
+        let yesFontSize = 18;
+
+        noBtn.addEventListener('mouseover', () => {
+            // Move No Button
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+
+            // Grow Yes Button
+            yesFontSize += 15;
+            yesBtn.style.fontSize = yesFontSize + 'px';
+        });
+
+        yesBtn.addEventListener('click', () => {
+            container.style.display = 'none';
+            celebration.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
